@@ -1,4 +1,5 @@
 import { CategoriesRepository } from "../repositories/CategoriesRepository";
+import { ICategoriesRepository } from "../repositories/ICategoriesRepository";
 
 interface IRequest {
     name: string;
@@ -6,9 +7,9 @@ interface IRequest {
 }
 
 class CreateCategoryService {
-    private categoriesRepository: CategoriesRepository; //inversão de controle por injeção de dependência
+    private categoriesRepository: ICategoriesRepository; //inversão de controle por injeção de dependência
 
-    constructor(categoriesRepository: CategoriesRepository) {
+    constructor(categoriesRepository: ICategoriesRepository) {
         this.categoriesRepository = categoriesRepository;
     }
 
