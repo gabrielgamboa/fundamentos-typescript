@@ -1,16 +1,13 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { ImportCategoryService } from "./ImportCategoryService";
 
 class ImportCategoryController {
-    private importCategoryService: ImportCategoryService;
-
-    constructor(importCategoryService: ImportCategoryService) {
-        this.importCategoryService = importCategoryService;
-    }
 
     handle(request: Request, response: Response): Response {
         const { file } = request;
-        this.importCategoryService.execute(file);
+        const importCategoryService = container.resolve(ImportCategoryService);
+        importCategoryService.execute(file);
         return response.send();
     }
 }
