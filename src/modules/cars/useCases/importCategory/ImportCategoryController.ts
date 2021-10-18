@@ -4,10 +4,10 @@ import { ImportCategoryService } from "./ImportCategoryService";
 
 class ImportCategoryController {
 
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
         const { file } = request;
         const importCategoryService = container.resolve(ImportCategoryService);
-        importCategoryService.execute(file);
+        await importCategoryService.execute(file);
         return response.send();
     }
 }
