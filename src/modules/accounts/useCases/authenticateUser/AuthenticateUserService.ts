@@ -3,6 +3,7 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
 import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { AppError } from "../../../../errors/AppError";
 
 interface IRequest {
     email: string;
@@ -29,13 +30,13 @@ class AuthenticateUserService {
         const user = await this.usersRepository.findByEmail(email);
 
         if (!user) {
-            throw new Error("E-mail or password incorrect");
+            throw new AppError("E-mail or password incorrect");
         }
 
         const passwordMatch = await compare(password, user.password);
 
         if (!passwordMatch) {
-            throw new Error("E-mail or password incorrect");
+            throw new AppError("E-mail or password incorrect");
         }
 
         const token = sign({}, "d5c6d7e0392032715f66cbd14e085594", {
