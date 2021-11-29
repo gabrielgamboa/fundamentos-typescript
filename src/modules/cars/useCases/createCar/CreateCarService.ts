@@ -14,11 +14,11 @@ interface IRequest {
 }
 
 
-// @injectable()
+@injectable()
 class CreateCarService {
 
     constructor(
-        // @inject("CarsRepository")
+        @inject("CarsRepository")
         private carsRepository: ICarsRepository
     ) { }
 
