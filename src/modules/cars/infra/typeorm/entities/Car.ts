@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn 
 import {v4 as uuidv4} from "uuid";
 import { Category } from "./Category";
 
-@Entity()
+@Entity("cars")
 class Car {
     @PrimaryColumn()
     id: string;
@@ -23,7 +23,7 @@ class Car {
     fine_amount: number;
 
     @Column()
-    available = true;
+    available: boolean;
     
     @Column()
     brand: string;
@@ -41,7 +41,7 @@ class Car {
     constructor() {
         if(!this.id) {
             this.id = uuidv4();
-            this.created_at = new Date();
+            this.available = true;
         }
     }
 }

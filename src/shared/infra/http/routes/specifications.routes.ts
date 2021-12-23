@@ -7,10 +7,9 @@ const specificationRoutes = Router();
 
 const createSpecificationController = new CreateSpecificationController();
 
-specificationRoutes.use(ensureAuthenticated);
-
-specificationRoutes.post("/", (request, response) => {
-    return createSpecificationController.handle(request, response);
-});
+specificationRoutes.post("/",
+    ensureAuthenticated,
+    createSpecificationController.handle
+);
 
 export { specificationRoutes }
