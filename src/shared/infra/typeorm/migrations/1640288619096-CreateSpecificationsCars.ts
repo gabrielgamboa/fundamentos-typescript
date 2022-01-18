@@ -29,7 +29,7 @@ export class CreateSpecificationsCars1640288619096 implements MigrationInterface
             new TableForeignKey(
                 {
                     name: "FKSpecificationCar",
-                    referencedTableName: "specification",
+                    referencedTableName: "specifications",
                     referencedColumnNames: ["id"],
                     columnNames: ["specification_id"],
                     onDelete: "SET NULL",
