@@ -1,0 +1,5 @@
+class UploadCarImageService {
+
+}
+
+export { UploadCarImageService }
